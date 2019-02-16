@@ -44,6 +44,7 @@ let main argv =
                 printfn "Trying to drive to %s" (convertDestinationToName(destination))
                 Threading.Thread.Sleep(900)
                 petrol <- driveTo(petrol, currentLocation, destination)
+                currentLocation <- destination
                 printfn "You have %d units of petrol remaining." petrol
                 Threading.Thread.Sleep(1300)
             else
