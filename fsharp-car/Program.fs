@@ -12,7 +12,7 @@ let getDestination() =
     let input = Console.ReadLine()
     let destination = input.ToLower()
     destination
-    
+        
 let mutable petrol = 100
 
 [<EntryPoint>]
@@ -24,4 +24,4 @@ let main argv =
             petrol <- driveTo(petrol, destination)
             printfn "Made it to %s! You have %d petrol left" destination petrol
         with ex -> printfn "ERROR: %s" ex.Message
-    0 // exit code that indicates that the program has ended properly.
+    0 // exit code that indicates that the program has ended properly.  
