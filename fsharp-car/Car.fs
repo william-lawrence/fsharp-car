@@ -34,6 +34,13 @@ let hasEnoughPetrolForStadium(petrol) =
     if petrol >= 35 then true
     else false
 
+/// Add 50 units of petrol up to the maximum amount of petrol.
+let addPetrol(petrol) =
+    if petrol + 50 > 300 then 
+        printfn "Your tank is full!"
+        300
+    else petrol + 50
+
 /// Drives to a given destination given a starting amount of petrol
 /// If they cant get there then it returns the orinal amount of petrol
 let driveTo (petrol, currentLocation, destination) = 
@@ -42,7 +49,7 @@ let driveTo (petrol, currentLocation, destination) =
         petrol
     elif destination = "p" && hasEnoughPetrolForPetrolStation(petrol) then 
         printfn "Made it to %s!" (convertDestinationToName(destination))
-        petrol + 50
+        addPetrol(petrol)
     elif destination = "w" && hasEnoughPetrolForWork(petrol) then 
         printfn "Made it to %s!" (convertDestinationToName(destination))
         petrol - 50
