@@ -8,9 +8,10 @@ let displayMenu() =
     Console.WriteLine("(W)ork")
     Console.WriteLine("(S)tadium")
     Console.WriteLine("(P)etrol Station")
+    ()
 
 /// Displays the possible destinations to the user and collects their input.
-/// This will always return the lowercase value
+/// This will always return the lowercase value.
 let getDestination(petrol) =
     Console.Clear()
     printfn "You have %d units of petrol." petrol
@@ -19,14 +20,24 @@ let getDestination(petrol) =
     let destination = input.ToLower()
     destination
 
+/// Checks to make sure that the user has entered a valid destination.
 let validateDestination(destination) = 
     if destination = "h" then true
     elif destination = "w" then true
     elif destination = "s" then true
     elif destination = "p" then true
     else false
+
+/// Converts the destination to its name.
+/// The input is already validatied, so we dont need to do that here.
+let convertDestinationToName(destination) =
+    if destination = "h" then "Home"
+    elif destination = "w" then "Work"
+    elif destination = "s" then "Stadium"
+    else "Petrol Station"
         
-let mutable petrol = 100
+let initialPetrol = 100
+let mutable petrol = initialPetrol
 
 [<EntryPoint>]
 let main argv =
@@ -34,13 +45,14 @@ let main argv =
         try
             let destination = getDestination(petrol)
             if validateDestination(destination) = true then
-                printfn "Trying to drive to %s" destination
+                printfn "Trying to drive to %s" (convertDestinationToName(destination))
                 petrol <- driveTo(petrol, destination)
-                printfn "Made it to %s!" destination
+                printfn "Made it to %s!" (convertDestinationToName(destination))
+                printfn "You have %d units of petrol remaining." petrol
                 Threading.Thread.Sleep(1500)
             else
-                printfn "Trying to drive to %s" destination
-                printfn "You don't have enough petrol to make it to %s!" destination
+                printfn "You didn't select a valid destination."
+                printfn "You have %d units of petrol remaining." petrol
                 Threading.Thread.Sleep(1500)
         with ex -> printfn "ERROR: %s" ex.Message
     0 // exit code that indicates that the program has ended properly.  

@@ -1,8 +1,7 @@
-﻿
+﻿/// Contains all the driving logic
 module Car
 
 open System
-open System.Text
 
 /// Determines if the car has enough petrol to get to work.
 /// Won't let the user go lower than 10 units so that they can get petrol.
@@ -34,7 +33,9 @@ let driveTo (petrol, destination) =
     elif destination = "w" && hasEnoughPetrolForWork(petrol) then petrol - 50
     elif destination = "h" && hasEnoughPetrolForHome(petrol) then petrol - 25
     elif destination = "s" && hasEnoughPetrolForStadium(petrol) then petrol - 25
-    else 
-        Console.WriteLine("You haven't selected a valid destination.")
+    else
+        printfn "You dont have enough petrol to make it there!"
+        printfn "Go to the petrol station."
+        Threading.Thread.Sleep(1500)
         petrol
         
