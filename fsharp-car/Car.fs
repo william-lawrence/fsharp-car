@@ -52,6 +52,6 @@ let driveTo (petrol, destination) =
     else
         printfn "You dont have enough petrol to make it there!"
         printfn "Go to the petrol station."
-        Threading.Thread.Sleep(1500)
+        Threading.Thread.Sleep(1300)
         petrol
         
