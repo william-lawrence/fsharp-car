@@ -17,5 +17,7 @@ The following is my implementation of Capstone 1 from "Get Programming With F#" 
 5. If the user travels to a gas station, the amount of petrol should be increased by 50 units.
 6. The maximum amount of petrol the car can hold is 300 units.
 7. If the user tries to add more than 300 units, the system will deny the request.
+8. The car starts at home.
+9. If the user tries to travel to where they are, the system will deny the request.
 
-**NOTE: I added requirements 6 and 7 as I thought they made the challenge more realistic and expanded beyond the expectations of the exercise.**
+**NOTE: I added requirements 6, 7, 8 and 9 as I thought they made the challenge more realistic and expanded beyond the expectations of the exercise.**
