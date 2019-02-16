@@ -34,5 +34,7 @@ let driveTo (petrol, destination) =
     elif destination = "w" && hasEnoughPetrolForWork(petrol) then petrol - 50
     elif destination = "h" && hasEnoughPetrolForHome(petrol) then petrol - 25
     elif destination = "s" && hasEnoughPetrolForStadium(petrol) then petrol - 25
-    else petrol
+    else 
+        Console.WriteLine("You haven't selected a valid destination.")
+        petrol
         
