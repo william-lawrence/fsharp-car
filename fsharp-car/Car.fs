@@ -36,8 +36,11 @@ let hasEnoughPetrolForStadium(petrol) =
 
 /// Drives to a given destination given a starting amount of petrol
 /// If they cant get there then it returns the orinal amount of petrol
-let driveTo (petrol, destination) = 
-    if destination = "p" && hasEnoughPetrolForPetrolStation(petrol) then 
+let driveTo (petrol, currentLocation, destination) = 
+    if currentLocation = destination then
+        printfn "You are already there!"
+        petrol
+    elif destination = "p" && hasEnoughPetrolForPetrolStation(petrol) then 
         printfn "Made it to %s!" (convertDestinationToName(destination))
         petrol + 50
     elif destination = "w" && hasEnoughPetrolForWork(petrol) then 
