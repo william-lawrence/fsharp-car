@@ -3,6 +3,14 @@ module Car
 
 open System
 
+/// Converts the destination to its name.
+/// The input is already validatied, so we dont need to do that here.
+let convertDestinationToName(destination) =
+    if destination = "h" then "Home"
+    elif destination = "w" then "Work"
+    elif destination = "s" then "Stadium"
+    else "Petrol Station"
+
 /// Determines if the car has enough petrol to get to work.
 /// Won't let the user go lower than 10 units so that they can get petrol.
 let hasEnoughPetrolForWork(petrol) = 
@@ -29,10 +37,18 @@ let hasEnoughPetrolForStadium(petrol) =
 /// Drives to a given destination given a starting amount of petrol
 /// If they cant get there then it returns the orinal amount of petrol
 let driveTo (petrol, destination) = 
-    if destination = "p" && hasEnoughPetrolForPetrolStation(petrol) then petrol + 50
-    elif destination = "w" && hasEnoughPetrolForWork(petrol) then petrol - 50
-    elif destination = "h" && hasEnoughPetrolForHome(petrol) then petrol - 25
-    elif destination = "s" && hasEnoughPetrolForStadium(petrol) then petrol - 25
+    if destination = "p" && hasEnoughPetrolForPetrolStation(petrol) then 
+        printfn "Made it to %s!" (convertDestinationToName(destination))
+        petrol + 50
+    elif destination = "w" && hasEnoughPetrolForWork(petrol) then 
+        printfn "Made it to %s!" (convertDestinationToName(destination))
+        petrol - 50
+    elif destination = "h" && hasEnoughPetrolForHome(petrol) then 
+        printfn "Made it to %s!" (convertDestinationToName(destination))
+        petrol - 25
+    elif destination = "s" && hasEnoughPetrolForStadium(petrol) then 
+        printfn "Made it to %s!" (convertDestinationToName(destination))
+        petrol - 25
     else
         printfn "You dont have enough petrol to make it there!"
         printfn "Go to the petrol station."
